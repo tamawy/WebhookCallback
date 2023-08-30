@@ -1,0 +1,19 @@
+﻿@model List<string>
+
+<table class="table table-striped">
+    <thead>
+        <tr class="">
+            <th>Request Number</th>
+            <th>Request Body</th>
+        </tr>
+    </thead>
+    <tbody>
+    @for (var i = Model.Count - 1; i >= 0; i--)
+    {
+        <tr>
+            <td>@i</td>
+            <td>@Model[i]</td>
+        </tr>
+    }
+    </tbody>
+</table>

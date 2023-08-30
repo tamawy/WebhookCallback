@@ -1,0 +1,27 @@
+﻿@model List<string>
+@{
+    ViewBag.Title = "Index";
+    Layout = "~/Views/Shared/_Layout.cshtml";
+}
+
+<h2>Index</h2>
+
+<div id="received_data">
+    @Html.Partial("_DataReceived", Model)
+</div>
+
+
+<script>
+    function requestData() {
+        $.ajax({
+            url: "/Webhook/GetReceivedData",
+            type: "GET"
+        }).done(function (data) {
+            $('#received_data').html(data);
+            console.log("Data refreshed");
+        }).fail(function (data) {
+            console.error("Failed to refresh data");
+        });
+    }
+    setInterval(requestData, 2000);
+</script>
